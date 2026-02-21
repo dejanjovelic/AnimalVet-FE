@@ -1,0 +1,9 @@
+@use"table.styles" as table;
+
+.patients-table-wrapper{
+    @include table.table-wraper-style(400px, auto);
+    max-width: auto;
+    .patient-table{
+        @include table.table-style(#333, white,#333);
+    }
+}

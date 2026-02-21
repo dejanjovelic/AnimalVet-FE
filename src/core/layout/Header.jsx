@@ -14,18 +14,26 @@ const Header = () => {
     navigate('/');
   };
 
+  console.log('Test ispis',("veterinarian").includes(user?.["http://schemas.microsoft.com/ws/2008/06/identity/claims/role"].toLowerCase()) ||
+            ("assistant").includes(user?.["http://schemas.microsoft.com/ws/2008/06/identity/claims/role"].toLowerCase()))
+
   return (
     <header className="header">
       <nav>
         <div className="nav-links">
           <Link to="/">Početna</Link>
-          <span style={{'flexGrow':1}}></span>
+          {(user && ("Veterinarian").includes(user?.["http://schemas.microsoft.com/ws/2008/06/identity/claims/role"]) ||
+            ("Assistant").includes(user?.["http://schemas.microsoft.com/ws/2008/06/identity/claims/role"])) && (
+              <Link to="/patient">Pacijenti</Link>
+            )}
+          <span style={{ 'flexGrow': 1 }}></span>
           {!user && (
             <>
               <Link to="/login">Prijava</Link>
               <Link to="/register">Registracija</Link>
             </>
           )}
+
 
           {user && (
             <>

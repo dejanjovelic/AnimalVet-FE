@@ -7,10 +7,12 @@ import Login from './features/users/Login';
 import Register from './features/users/Register';
 import Profile from './features/users/Profile';
 import './core/global.scss';
+import PatientPage from './features/users/PatientPage/PatientPage';
+import AddPatientForm from './features/AddPatientForm';
 
 const App = () => {
   let token = localStorage.getItem('token');
-  if(token) token = JSON.parse(atob(token.split('.')[1]));
+  if (token) token = JSON.parse(atob(token.split('.')[1]));
   const [user, setUser] = useState(token);
 
   return (
@@ -23,6 +25,8 @@ const App = () => {
             <Route path="/login" element={<Login />} />
             <Route path="/register" element={<Register />} />
             <Route path="/profile" element={<Profile />} />
+            <Route path="/patient" element={<PatientPage />} />
+            <Route path="/add-patient" element={<AddPatientForm/>}/>
           </Routes>
         </div>
       </BrowserRouter>
